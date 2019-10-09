@@ -1,52 +1,54 @@
 const remoteURL = "http://localhost:8088"
 let API = {
-    get(resource, id) {
-        return fetch(`${remoteURL}/${resource}/${id}`).then(e => e.json())
+    /*
+          Since the purpose of this module is to be used by
+          all of the more specialized ones, then the string
+          of `animals` should not be hard coded here.
+    */
+
+    get(resource,id ) {
+        return fetch(`${remoteURL}/${resource}/${id}`).then(response => response.json())
     },
-    getAndExpand(resource, id, expanded) {
-        return fetch(`${remoteURL}/${resource}/${id}?_expand=${expanded}`).then(e => e.json())
+    getAndExpand(id, resource, expanded) {
+        return fetch(`${remoteURL}/${resource}/${id}?_expand=${expanded}`).then(response => response.json())
     },
     getAll(resource) {
-        return fetch(`${remoteURL}/${resource}`).then(e => e.json())
+        return fetch(`${remoteURL}/${resource}`).then(response => response.json())
     },
-    delete(resource, id) {
+    delete(resource,id) {
         return fetch(`${remoteURL}/${resource}/${id}`, {
             method: "DELETE"
         })
-            .then(result => result.json())
+            .then(response => response.json())
     },
-    post(resource, newObject,) {
+    post(resource,newObject) {
         return fetch(`${remoteURL}/${resource}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(newObject)
-        }).then(data => data.json())
+        }).then(response => response.json())
     },
-    update(resource, editedObject,) {
+    update(resource,editedObject) {
         return fetch(`${remoteURL}/${resource}/${editedObject.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(editedObject)
-        }).then(data => data.json());
+        }).then(response => response.json());
 
-    }, getObjectWithDatabase(id, firstResource, secondResource) {
+    }, getObjectWithDatabase(firstResource, id, secondResource) {
         return fetch(`${remoteURL}/${firstResource}/${id}?_embed=${secondResource}`)
-            .then(result => result.json())
+            .then(response => response.json())
     },
     searchDatabase(search, database, type) {
         return fetch(`${remoteURL}/${database}?${type}_like=${search}`)
-            .then(result => result.json())
+            .then(response => response.json())
     }
 
 
 }
 
-export default API 
-
-
-
-
+export default API
