@@ -1,41 +1,51 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+import Login from './auth/Login'
+import Home from './home/home'
 
-export default class ApplicationViews extends Component {
 
+
+class ApplicationViews extends Component {
+  isAuthenticated = () => localStorage.getItem("credentials") !== null
+  
   render() {
     return (
       <React.Fragment>
 
         <Route
-          exact path="/" render={props => {
-            return null
+          exact path="/home" render={props => {
+            return <Home />
             // Remove null and return the component which will show news articles
           }}
         />
+        <Route path="/auth" render={props => {
+          return <Login setUser={this.props.setUser} {...props} />
+        }} />
 
-        <Route
+        {/* <Route
           path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
+            return <Friends />
+            // Remove  and return the component which will show list of friends
           }}
         />
 
         <Route
           path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
+            return <Messages />
+            // Remove  and return the component which will show the messages
           }}
         />
 
         <Route
           path="/tasks" render={props => {
-            return null
-            // Remove null and return the component which will show the user's tasks
+            return <Tasks/> 
+            // Remove  and return the component which will show the user's tasks
           }}
-        />
-        
+        /> */}
+
       </React.Fragment>
     );
   }
 }
+
+export default ApplicationViews
