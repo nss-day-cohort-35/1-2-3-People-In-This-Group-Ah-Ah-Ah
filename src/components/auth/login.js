@@ -27,39 +27,52 @@ class Login extends Component {
       })
     );
     this.props.history.push("/home");
+    let credentials = { username: this.state.username, email: this.state.email, password: this.state.password }
+    this.props.setUser(credentials);
+    this.props.history.push("/home");
   };
 
   render() {
     return (
       <>
-        <Form>
+        <Form onSubmit={this.handleLogin}>
           <FormGroup>
             <Label for="username">UserName</Label>
             <Input
+              onChange={this.handleFieldChange}
               type="username"
               name="username"
               id="username"
+              required=""
+              autoFocus=""
               placeholder="Enter UserName"
             />
           </FormGroup>
           <FormGroup>
             <Label for="Email">Email</Label>
             <Input
+              onChange={this.handleFieldChange}
               type="email"
               name="email"
               id="email"
+              required=""
+              autoFocus=""
               placeholder="Enter Email"
             />
           </FormGroup>
           <FormGroup>
             <Label for="password">Password</Label>
             <Input
+              onChange={this.handleFieldChange}
               type="password"
               name="password"
               id="password"
+              required=""
+              autoFocus=""
               placeholder="Enter Password"
             />
           </FormGroup>
+          <Button color="danger">Let the Blood Bath Begin</Button>
         </Form>
       </>
     );
