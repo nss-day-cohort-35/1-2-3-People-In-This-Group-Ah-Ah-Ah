@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
-import "./Nutshell.css";
+import "./DashBoard.css";
 
-class Nutshell extends Component {
+class DashBoard extends Component {
   render() {
     return (
       <React.Fragment>
@@ -14,4 +14,4 @@ class Nutshell extends Component {
   }
 }
 
-export default Nutshell;
+export default DashBoard;

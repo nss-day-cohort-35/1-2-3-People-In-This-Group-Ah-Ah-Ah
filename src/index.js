@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from "react-router-dom"
-import Nutshell from './components/Nutshell'
+import DashBoard from './components/DashBoard'
 import './index.css'
 
 ReactDOM.render(
   <Router>
-      <Nutshell />
+    <DashBoard />
   </Router>
   , document.getElementById('root'))

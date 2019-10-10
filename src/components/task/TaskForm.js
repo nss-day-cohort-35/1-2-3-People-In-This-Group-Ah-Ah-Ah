@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import APIManager from "../../modules/APIManager"
+import API from "../../modules/APIManager"
+
 
 
 class TaskForm extends Component {
@@ -28,7 +29,7 @@ class TaskForm extends Component {
             complete: false,
             userId: parseInt(localStorage.getItem("userID"))
         }
-        APIManager.post("tasks", newTask)
+        API.post("tasks", newTask)
             .then(() => this.props.history.push("/tasks"));
     }
 

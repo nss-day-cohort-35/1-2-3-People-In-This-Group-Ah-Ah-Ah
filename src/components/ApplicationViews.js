@@ -44,12 +44,8 @@ class ApplicationViews extends Component {
           }}
         />
 
-        <Route exact path="/tasks" render={props => {
-          if (this.props.user) {
-            return <TaskList {...props} />
-          } else {
-            return <Redirect to="/login" />
-          }
+        <Route path="/tasks" render={props => {
+          return <TaskList {...props} />
         }} />
 
         <Route path="/tasks/new" render={(props) => {

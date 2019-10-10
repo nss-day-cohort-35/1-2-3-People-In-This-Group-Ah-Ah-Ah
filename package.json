@@ -13,7 +13,7 @@
     "reactstrap": "^8.0.1"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"json-server -w api/database.json -p 8808\"",
+    "start": "concurrently \"react-scripts start\" \"json-server -w api/database.json -p 8088\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

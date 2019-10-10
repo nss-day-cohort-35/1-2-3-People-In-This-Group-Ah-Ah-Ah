@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+// import { Link } from 'react-router-dom'
+// import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import TaskCard from './TaskCard'
+import API from '../../modules/APIManager';
 
 class TaskList extends Component {
     //define what this component needs to render
@@ -10,9 +11,9 @@ class TaskList extends Component {
     }
 
     deleteTask = id => {
-        APIManager.delete(id)
+        API.delete("tasks", id)
             .then(() => {
-                APIManager.getAll()
+                API.getAll("tasks")
                     .then((newTasks) => {
                         this.setState({
                             tasks: newTasks
@@ -22,8 +23,8 @@ class TaskList extends Component {
     }
 
     getData = () => {
-        //getAll from AnimalManager and hang on to that data; put it in state
-        APIManager.getAll()
+        //getAll from APIManager and hang on to that data; put it in state
+        API.getAll("tasks")
             .then((tasks) => {
                 this.setState({
                     tasks: tasks
@@ -37,34 +38,16 @@ class TaskList extends Component {
     // create a new task, edit, or mark completed
     render() {
         return (
-            <React.Fragment>
-                <FormGroup className="newTask">
-                    <Button type="button"
-                        className="taskButton"
-                        onClick={() => {
-                            this.props.history.push("/tasks/new")
-                        }}>Add Task</Button>
-                </FormGroup>
-                <FormGroup className="content">
-                    {
-                        this.props.tasks.map(task =>
-                            <FormGroup>
-                                <TaskCard key={task.id} className="card">
-                                    <Label>Edit <Link className="edit-link" to={`tasks/${task.id}/edit`}>{task.task}</Link> </Label>
-                                    <Label>Completed <Input type="checkbox"
-                                        onClick={() => {
-                                            this.taskComplete(task.id)
-                                        }}
-                                    ></Input></Label>
-                                </TaskCard>
-                            </FormGroup>
-                        )
-                    }
-                </FormGroup>
-            </React.Fragment>
+            <div>
+
+                {this.state.tasks.map(task =>
+                    <TaskCard key={task.id} task={task} deleteTask={this.deleteTask} {...this.props} className="card" />
+
+                )}
+
+            </div>
 
         )
     }
 }
-
 export default TaskList

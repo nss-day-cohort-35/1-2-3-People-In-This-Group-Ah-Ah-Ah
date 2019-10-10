@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import APIManager from "../../modules/APIManager"
+import API from "../../modules/APIManager";
 
 class TaskEditForm extends Component {
     //set the initial state
@@ -29,12 +29,12 @@ class TaskEditForm extends Component {
             userId: parseInt(localStorage.getItem("userId"))
         };
         // push edited task
-        APIManager.update("tasks", editedTask)
+        API.update("tasks", editedTask)
             .then(() => this.props.history.push("/tasks"))
     }
 
     componentDidMount() {
-        APIManager.get(this.props.match.params.taskId)
+        API.get(this.props.match.params.taskId)
             .then(task => {
                 this.setState({
                     title: task.name,
