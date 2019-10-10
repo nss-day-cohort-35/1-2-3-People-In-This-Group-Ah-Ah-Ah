@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 //import { Link } from "react-router-dom";
 import API from "./../../modules/APIManager"
-import {Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button} from 'reactstrap';
+import {Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row} from 'reactstrap';
+import { FaRegTrashAlt, FaRegEdit} from "react-icons/fa";
+import "./Article.css"
 
 class ArticleCard extends Component {
     handleDelete = () => {
@@ -13,10 +15,12 @@ class ArticleCard extends Component {
     render() {
         return (
           <div>
-            <Card>
-             <Button type="button">logo</Button>
-             <Button type="button">x</Button>
-              <CardImg top width="100%" src={require("./../../img/vampire.jpg")} alt="Card image cap"/>
+            <Card className="mainCard">
+              <Row className="flex">
+                <Button type="button"><FaRegEdit/></Button>
+                <Button type="button"><FaRegTrashAlt/></Button>
+              </Row>
+              <CardImg className="img" top width="100%" src={require("./../../img/vampire.jpg")} alt="Card image cap"/>
               <CardBody>
                 <CardTitle>{this.props.article.headline}</CardTitle>
                 <CardSubtitle>{this.props.article.date}</CardSubtitle>

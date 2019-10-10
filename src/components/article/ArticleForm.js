@@ -1,13 +1,29 @@
+import React, { Component } from 'react';
+import API from '../../modules/APIManager';
+import {Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import "./Article.css"
+
 class ArticleForm extends Component {
     //set the initial state
-    state = {
+    constructor(props) {
+      super(props);
+      this.state = {
         headline: "",
         date: "",
         description: "",
         image: "",
         url: "",
-        loadingStatus: true
+        loadingStatus: false,
+        modal: false
     };
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
 
     handleFieldChange = evt => {
       const stateToChange = {}
@@ -19,46 +35,37 @@ class ArticleForm extends Component {
         evt.preventDefault();
             this.setState({ loadingStatus: true });
             const article = {
-                headline: article.state.headline,
-                date: article.state.date,
-                description: article.state.description,
-                image: article.state.image,
-                url: article.state.url,
+                headline: this.state.headline,
+                date: this.state.date,
+                description: this.state.description,
+                image: this.state.image,
+                url: this.state.url,
             };
-
-        API.post( "articles", editedArticle)
+        API.post("articles", article)
           .then(() => this.props.history.push("/articles"))
     }
 
-    componentDidMount() {
-      API.get("articles", this.props.match.params.articleId)
-      .then(article => {
-          this.setState({
-            headline: article.headline,
-            date: article.date,
-            description: article.description,
-            image: article.image,
-            url: article.url,
-            loadingStatus: false
-          });
-      });
-    }
-
     render() {
+      if (this.state.loadingStatus) return <p>Loading...</p>
+
       return (
         <>
-          <Form>
+        <div className="center">
+        <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalBody>
+           <Form>
+            <ModalHeader toggle={this.toggle}>New Post</ModalHeader>
             <FormGroup>
-                <Label for="headline">Headline</Label>
-                <Input type="text" name="headline" id="headline" onChange={this.handleFieldChange} placeholder="place headline"/>
+              <Input type="text" name="headline" id="headline" onChange={this.handleFieldChange} placeholder="place headline"/>
             </FormGroup>
             <FormGroup>
-                <Label for="date">Date</Label>
-                <Input type="text" name="date" id="date" onChange={this.handleFieldChange} placeholder="place date"/>
+               <Label for="date">Date</Label>
+               <Input type="date" name="date" id="date" onChange={this.handleFieldChange} placeholder="place date"/>
             </FormGroup>
             <FormGroup>
                 <Label for="date">Description</Label>
-                <Input type="date" name="description" id="description" onChange={this.handleFieldChange} placeholder="place description"/>
+                <Input type="text" name="description" id="description" onChange={this.handleFieldChange} placeholder="place description"/>
             </FormGroup>
             <FormGroup>
                 <Label for="date">Image</Label>
@@ -68,8 +75,13 @@ class ArticleForm extends Component {
                 <Label for="date">URL</Label>
                 <Input type="text" name="url" id="image" onChange={this.handleFieldChange} placeholder="place image"/>
             </FormGroup>
+           </Form>
+          </ModalBody>
+          <ModalFooter>
             <Button type="button" disabled={this.state.loadingStatus} onClick={this.constructNewArticle}>Submit</Button>
-          </Form>
+          </ModalFooter>
+      </Modal>
+    </div>  
         </>
       );
     }

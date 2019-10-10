@@ -1,0 +1,20 @@
+.mainCard {
+    max-width: 30%;
+    max-height: 30%;
+}
+
+.img {
+ max-width: 10%;
+ max-height: 10%;
+}
+
+.center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+

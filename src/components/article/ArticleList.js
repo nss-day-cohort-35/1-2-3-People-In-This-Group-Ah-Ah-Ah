@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 //import the components we will need
 import ArticleCard from './ArticleCard'
 import API from "./../../modules/APIManager"
+import {Button} from 'reactstrap';
+import "./Article.css"
 
 
 class ArticleList extends Component {
@@ -26,6 +28,9 @@ render(){
 
     return(
         <div>
+          <div className="flex">
+           <Button onClick={() => {this.props.history.push("/articles/new")}}>New Post</Button>
+          </div>
             {this.state.articles.map(article => <ArticleCard key={article.id} article={article} {...this.props}/>)}
         </div>
     )
