@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import taskManager from "./TaskManager"
+import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import APIManager from "../../modules/APIManager"
 
 class TaskEditForm extends Component {
     //set the initial state
@@ -7,7 +8,9 @@ class TaskEditForm extends Component {
         userId: "",
         title: "",
         date: "",
-        complete: ""
+        complete: "",
+        collapse: false,
+        status: ""
     };
     // set state to value of input
     handleFieldChange = event => {
@@ -26,12 +29,12 @@ class TaskEditForm extends Component {
             userId: parseInt(localStorage.getItem("userId"))
         };
         // push edited task
-        taskManager.update(editedTask)
+        APIManager.update("tasks", editedTask)
             .then(() => this.props.history.push("/tasks"))
     }
 
     componentDidMount() {
-        taskManager.get(this.props.match.params.taskId)
+        APIManager.get(this.props.match.params.taskId)
             .then(task => {
                 this.setState({
                     title: task.name,
@@ -48,34 +51,34 @@ class TaskEditForm extends Component {
     render() {
         return (
             <>
-                <form onSubmit={this.updateExistingTask} className="taskForm">
-                    <div className="taskDiv">
-                        <label htmlFor="task">Task</label>
-                        <input
+                <Form onSubmit={this.updateExistingTask} className="taskForm">
+                    <FormGroup className="taskFormGroup">
+                        <Label htmlFor="task">Task</Label>
+                        <Input
                             type="text"
                             required
                             className="taskFormInput"
                             onChange={this.handleFieldChange}
-                            id="task"
-                            placeholder="Task Name"></input>
-                    </div>
-                    <div className="dateInput">
-                        <label htmlFor="completeDate">Date</label>
-                        <input
+                            id="taskEdit"
+                            placeholder="Task Name"></Input>
+                    </FormGroup>
+                    <FormGroup className="dateInput">
+                        <Label htmlFor="completeDate">Date</Label>
+                        <Input
                             type="date"
                             required
                             className="dateForm"
                             onChange={this.handleFieldChange}
-                            id="completeDate"
+                            id="taskEditCompleteDate"
                             value={this.state.completeDate}
                         />
-                    </div>
-                    <button
+                    </FormGroup>
+                    <Button
                         type="submit"
                         className="btn btn-primary">
                         Submit
-                </button>
-                </form>
+                </Button>
+                </Form>
             </>
         );
     }

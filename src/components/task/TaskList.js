@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-
+import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 class TaskList extends Component {
     // create an object to show we've completed our task
@@ -8,7 +8,7 @@ class TaskList extends Component {
         const object = {
             id: taskId,
             complete: true,
-            userId: parseInt(sessionStorage.getItem("userID"))
+            userId: parseInt(localStorage.getItem("userID"))
         }
         this.props.doneTask(object)
     }
@@ -16,27 +16,27 @@ class TaskList extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="newTask">
-                    <button type="button"
+                <FormGroup className="newTask">
+                    <Button type="button"
                         className="taskButton"
                         onClick={() => {
                             this.props.history.push("/tasks/new")
-                        }}>Add Task</button>
-                </div>
-                <section className="content">
+                        }}>Add Task</Button>
+                </FormGroup>
+                <FormGroup className="content">
                     {
                         this.props.tasks.map(task =>
-                            <div key={task.id} className="card">
-                                <label>Edit <Link className="edit-link" to={`tasks/${task.id}/edit`}>{task.task}</Link> </label>
-                                <label>Completed <input type="checkbox"
+                            <FormGroup key={task.id} className="card">
+                                <Label>Edit <Link className="edit-link" to={`tasks/${task.id}/edit`}>{task.task}</Link> </Label>
+                                <Label>Completed <Input type="checkbox"
                                     onClick={() => {
                                         this.taskComplete(task.id)
                                     }}
-                                ></input></label>
-                            </div>
+                                ></Input></Label>
+                            </FormGroup>
                         )
                     }
-                </section>
+                </FormGroup>
             </React.Fragment>
 
         )

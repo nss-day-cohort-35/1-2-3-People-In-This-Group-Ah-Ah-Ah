@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import taskManager from "./TaskManager"
+import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import APIManager from "../../modules/APIManager"
 
 
 class TaskForm extends Component {
@@ -7,7 +8,9 @@ class TaskForm extends Component {
         userId: "",
         title: "",
         date: "",
-        complete: ""
+        complete: "",
+        collapse: false,
+        status: ""
     };
     // sets state to value of input field
     handleFieldChange = event => {
@@ -25,42 +28,71 @@ class TaskForm extends Component {
             complete: false,
             userId: parseInt(localStorage.getItem("userID"))
         }
-        taskManager.post(newTask)
+        APIManager.post("tasks", newTask)
             .then(() => this.props.history.push("/tasks"));
     }
 
     // build JSX that will display on DOM
     render() {
+        let keaton4President = {
+            toggle: () => {
+                console.log("what is this", this)
+
+                this.setState({ collapse: !this.state.collapse });
+            },
+            onEntering: () => {
+                this.setState({ status: 'Opening...' });
+            },
+
+            onEntered: () => {
+                this.setState({ status: 'Opened' });
+            },
+
+            onExiting: () => {
+                this.setState({ status: 'Closing...' });
+            },
+
+            onExited: () => {
+                this.setState({ status: 'Closed' });
+            }
+        }
+
         return (
             <>
-                <form onSubmit={this.constructNewTask} className="taskForm">
-                    <div className="taskDiv">
-                        <label htmlFor="task">Task</label>
-                        <input
-                            type="text"
-                            required
-                            className="taskFormInput"
-                            onChange={this.handleFieldChange}
-                            id="task"
-                            placeholder="Task Name"></input>
-                    </div>
-                    <div className="dateInput">
-                        <label htmlFor="completeDate">Date</label>
-                        <input
-                            type="date"
-                            required
-                            className="dateForm"
-                            onChange={this.handleFieldChange}
-                            id="completeDate"
-                            value={this.state.completeDate}
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="btn btn-primary">
-                        Submit
-                </button>
-                </form>
+                <Collapse isOpen={this.state.collapse}
+                    onEntering={keaton4President.onEntering}
+                    onEntered={keaton4President.onEntered}
+                    onExiting={keaton4President.onExiting}
+                    onExited={keaton4President.onExited}>
+                    <Form onSubmit={this.constructNewTask} className="taskForm">
+                        <FormGroup className="taskFormGroup">
+                            <Label htmlFor="task">Task</Label>
+                            <Input
+                                type="text"
+                                required
+                                className="taskFormInput"
+                                onChange={this.handleFieldChange}
+                                id="task"
+                                placeholder="Task Name"></Input>
+                        </FormGroup>
+                        <FormGroup className="dateInput">
+                            <Label htmlFor="completeDate">Date</Label>
+                            <Input
+                                type="date"
+                                required
+                                className="dateForm"
+                                onChange={this.handleFieldChange}
+                                id="completeDate"
+                                value={this.state.completeDate}
+                            />
+                        </FormGroup>
+                        <Button
+                            type="submit"
+                            className="btn btn-primary">
+                            Submit
+                </Button>
+                    </Form>
+                </Collapse>
             </>
         )
     }
