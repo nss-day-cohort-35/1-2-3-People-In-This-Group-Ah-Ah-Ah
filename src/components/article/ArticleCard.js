@@ -6,10 +6,11 @@ import { FaRegTrashAlt, FaRegEdit} from "react-icons/fa";
 import "./Article.css"
 
 class ArticleCard extends Component {
+
     handleDelete = () => {
-        this.setState({loadingStatus: true})
-        API.delete("articles", this.props.articleId)
-        .then(() => this.props.history.push("/articles"))
+        console.log("handle delete :", this.props.article.id)
+        API.delete("articles", this.props.article.id)
+          .then(() => this.props.history.push("/articles"))
     }
 
     render() {
@@ -18,7 +19,7 @@ class ArticleCard extends Component {
             <Card className="mainCard">
               <Row className="flex">
                 <Button type="button"><FaRegEdit/></Button>
-                <Button type="button"><FaRegTrashAlt/></Button>
+                <Button type="button" onClick={this.handleDelete}><FaRegTrashAlt/></Button>
               </Row>
               <CardImg className="img" top width="100%" src={require("./../../img/vampire.jpg")} alt="Card image cap"/>
               <CardBody>

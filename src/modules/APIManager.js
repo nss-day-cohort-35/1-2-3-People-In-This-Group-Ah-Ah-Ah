@@ -6,7 +6,7 @@ let API = {
           of `animals` should not be hard coded here.
     */
 
-    get(resource,id ) {
+    get(resource, id ) {
         return fetch(`${remoteURL}/${resource}/${id}`).then(response => response.json())
     },
     getAndExpand(id, resource, expanded) {
@@ -15,13 +15,14 @@ let API = {
     getAll(resource) {
         return fetch(`${remoteURL}/${resource}`).then(response => response.json())
     },
-    delete(resource,id) {
-        return fetch(`${remoteURL}/${resource}/${id}`, {
+    delete(resource, id) {
+        console.log(`${remoteURL}/${resource}/${id}`)
+          return fetch(`${remoteURL}/${resource}/${id}`, {
             method: "DELETE"
-        })
+         })
             .then(response => response.json())
     },
-    post(resource,newObject) {
+    post(resource, newObject) {
         return fetch(`${remoteURL}/${resource}`, {
             method: "POST",
             headers: {

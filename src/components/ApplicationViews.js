@@ -1,8 +1,9 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
-import ArticleList from "./article/ArticleList"
-import Login from './auth/Login'
-import Home from './home/home'
+import ArticleList from "./article/ArticleList";
+import ArticleForm from "./article/ArticleForm";
+import Login from "./auth/Login";
+import Home from './home/home';
 
 
 
@@ -21,9 +22,13 @@ class ApplicationViews extends Component {
         />
         <Route
           path="/articles" render={props => {
-            return  <ArticleList {...props}/>
+            return <ArticleList {...props}/>
           }}
         />
+        <Route path="/articles/new" render={(props) => {
+           return <ArticleForm {...props} />
+        }} />
+
         <Route path="/auth" render={props => {
           return <Login setUser={this.props.setUser} {...props} />
         }} />

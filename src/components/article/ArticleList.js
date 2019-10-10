@@ -12,6 +12,12 @@ class ArticleList extends Component {
         articles: [],
     }
 
+    handleDelete = () => {
+        console.log("handle delete :", this.props.article.id)
+        API.delete("articles", this.props.article.id)
+          .then(() => this.props.history.push("/articles"))
+    }
+
 componentDidMount(){
     console.log("Article LIST: ComponentDidMount");
 

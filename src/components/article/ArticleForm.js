@@ -64,7 +64,7 @@ class ArticleForm extends Component {
                <Input type="date" name="date" id="date" onChange={this.handleFieldChange} placeholder="place date"/>
             </FormGroup>
             <FormGroup>
-                <Label for="date">Description</Label>
+                <Label for="description">Description</Label>
                 <Input type="text" name="description" id="description" onChange={this.handleFieldChange} placeholder="place description"/>
             </FormGroup>
             <FormGroup>
@@ -81,7 +81,7 @@ class ArticleForm extends Component {
             <Button type="button" disabled={this.state.loadingStatus} onClick={this.constructNewArticle}>Submit</Button>
           </ModalFooter>
       </Modal>
-    </div>  
+    </div>
         </>
       );
     }
