@@ -5,7 +5,7 @@ import API from "../../modules/APIManager";
 class TaskEditForm extends Component {
     //set the initial state
     state = {
-        userId: "",
+        userId: parseInt(localStorage.getItem("userId")),
         title: "",
         date: "",
         complete: "",
@@ -23,10 +23,11 @@ class TaskEditForm extends Component {
         event.preventDefault()
         this.setState({ loadingStatus: true });
         const editedTask = {
-            title: this.props.match.params.taskId,
+            id: this.props.match.params.taskId,
+            title: this.state.title,
             date: this.state.date,
             complete: false,
-            userId: parseInt(localStorage.getItem("userId"))
+            userId: this.state.userId
         };
         // push edited task
         API.update("tasks", editedTask)
@@ -34,7 +35,7 @@ class TaskEditForm extends Component {
     }
 
     componentDidMount() {
-        API.get(this.props.match.params.taskId)
+        API.get("tasks", this.props.match.params.taskId)
             .then(task => {
                 this.setState({
                     title: task.name,
@@ -59,7 +60,7 @@ class TaskEditForm extends Component {
                             required
                             className="taskFormInput"
                             onChange={this.handleFieldChange}
-                            id="taskEdit"
+                            id="title"
                             placeholder="Task Name"></Input>
                     </FormGroup>
                     <FormGroup className="dateInput">

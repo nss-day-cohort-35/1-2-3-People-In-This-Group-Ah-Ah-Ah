@@ -22,7 +22,7 @@ class TaskCard extends Component {
                     <Label>Date: {this.props.task.date} </Label>
                     <Link to={`/tasks/${this.props.task.id}`}><Button>All Tasks</Button></Link>
                     <Button type="button" onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}>Edit</Button>
-                    <Button type="button" onClick={() => this.props.handleDelete(this.props.task.id)}>Delete</Button>
+                    <Button type="button" onClick={() => this.handleDelete(this.props.task.id)}>Delete</Button>
                 </FormGroup>
             </Form>
         );

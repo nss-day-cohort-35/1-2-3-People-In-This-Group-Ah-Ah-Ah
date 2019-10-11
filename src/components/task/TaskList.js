@@ -23,6 +23,7 @@ class TaskList extends Component {
     }
 
     getData = () => {
+        console.log("trying to get tasks")
         //getAll from APIManager and hang on to that data; put it in state
         API.getAll("tasks")
             .then((tasks) => {
@@ -42,6 +43,7 @@ class TaskList extends Component {
 
                 {this.state.tasks.map(task =>
                     <TaskCard key={task.id}
+                        getData={this.getData}
                         task={task}
                         deleteTask={this.deleteTask}
                         {...this.props}

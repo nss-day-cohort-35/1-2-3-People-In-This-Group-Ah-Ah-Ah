@@ -1,6 +1,6 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
-import Login from './auth/Login'
+import Login from './auth/login'
 import Home from './home/home'
 import TaskEditForm from './task/TaskEditForm'
 import TaskList from './task/TaskList'
@@ -44,7 +44,7 @@ class ApplicationViews extends Component {
           }}
         />
 
-        <Route path="/tasks" render={props => {
+        <Route exact path="/tasks" render={props => {
           return <TaskList {...props} />
         }} />
 

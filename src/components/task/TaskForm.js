@@ -37,7 +37,6 @@ class TaskForm extends Component {
     render() {
         let keaton4President = {
             toggle: () => {
-                console.log("what is this", this)
 
                 this.setState({ collapse: !this.state.collapse });
             },
