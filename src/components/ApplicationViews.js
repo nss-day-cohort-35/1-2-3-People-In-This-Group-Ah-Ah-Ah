@@ -1,65 +1,136 @@
-import { Route, Redirect } from "react-router-dom";
-import React, { Component } from "react";
-import Login from './auth/login'
-import Home from './home/home'
-import TaskEditForm from './task/TaskEditForm'
-import TaskList from './task/TaskList'
-import TaskForm from './task/TaskForm'
+import { Route, Redirect } from 'react-router-dom'
+import React, { Component } from 'react'
+import ArticleList from "./article/ArticleList"
+import ArticleForm from "./article/ArticleForm"
+import ArticleEditForm from "./article/ArticleEditForm"
+
+import EventList from "./event/EventList"
+import EventForm from "./event/EventForm"
+import EventDetails from "./event/EventDetails"
+import EventEditForm from "./event/EventEditForm"
+
+import TaskList from "./task/TaskList"
+import TaskForm from "./task/TaskForm"
+import TaskEditForm from "./task/TaskForm"
+
+import FriendList from "./friend/FriendList"
+
+import MessageList from "./message/MessageList"
+import MessageForm from "./message/MessageForm"
+import MessageEditForm from "./message/MessageEditForm"
+
+import Home from './home/Home'
+import Login from './auth/Login'
 
 
 class ApplicationViews extends Component {
+  isAuthenticated = () => localStorage.getItem("credentials") !== null
 
   render() {
     return (
       <React.Fragment>
-
-        <Route
-          exact path="/home" render={props => {
-            return <Home />
-            // Remove null and return the component which will show news articles
-          }}
-        />
-        <Route path="/auth" render={props => {
-          return <Login setUser={this.props.setUser} {...props} />
+        <Route exact path="/" render={(props) => {
+          return <Home />
         }} />
 
-        <Route
-          exact path="/" render={props => {
-            return null
-            // Remove null and return the component which will show news articles
-          }}
-        />
+        {/* Make sure you add the `exact` attribute here */}
+        <Route exact path="/" render={props => {
+          if (this.props.user) {
+            return <Home {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
 
-        <Route
-          path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
-          }}
-        />
 
-        <Route
-          path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
-          }}
-        />
+        {/* Article Routes */}
+        <Route exact path="/articles" render={props => {
+          if (this.props.user) {
+            return <ArticleList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+        <Route path="/articles/new" render={(props) => {
+          return <ArticleForm {...props} />
+        }} />
+        <Route path="/articles/:articleId(\d+)/edit" render={props => {
+          return <ArticleEditForm {...props} />
+        }} />
 
+
+
+        {/* Event Routes */}
+        <Route exact path="/events" render={props => {
+          if (this.props.user) {
+            return <EventList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+        <Route path="/events/new" render={(props) => {
+          return <EventForm {...props} />
+        }} />
+        <Route path="/events/:eventId(\d+)/edit" render={props => {
+          return <EventEditForm {...props} />
+        }} />
+        <Route exact path="/events/:eventId(\d+)" render={(props) => {
+          return <EventDetails animalId={parseInt(props.match.params.animalId)}{...props} />
+        }} />
+
+
+
+
+
+
+        {/* Task Routes */}
         <Route exact path="/tasks" render={props => {
-          return <TaskList {...props} />
+          if (this.props.user) {
+            return <TaskList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
         }} />
-
         <Route path="/tasks/new" render={(props) => {
-          return <TaskForm {...props}
-            addTask={this.addTask}
-          />
+          return <TaskForm {...props} />
         }} />
-
-        <Route path="/tasks/:taskId(\d+)/edit" render={props => {
+        <Route path="/tasks/:eventId(\d+)/edit" render={props => {
           return <TaskEditForm {...props} />
         }} />
 
+
+
+
+        {/* Friend Routes */}
+        <Route exact path="/friends" render={props => {
+          if (this.props.user) {
+            return <FriendList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+
+
+        {/* Message Routes */}
+        <Route exact path="/message" render={props => {
+          if (this.props.user) {
+            return <MessageList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+        <Route path="/message/new" render={(props) => {
+          return <MessageForm {...props} />
+        }} />
+        <Route path="/message/:messageId(\d+)/edit" render={props => {
+          return <MessageEditForm {...props} />
+        }} />
+        <Route path="/login" render={props => {
+          return <Login setUser={this.props.setUser} {...props} />
+        }} />
       </React.Fragment>
-    );
+    )
   }
 }
 export default ApplicationViews

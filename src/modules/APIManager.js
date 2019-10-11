@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const remoteURL = "http://localhost:8088"
+=======
+const remoteURL = "http://localhost:5002"
+>>>>>>> master
 let API = {
     /*
           Since the purpose of this module is to be used by
@@ -6,7 +10,11 @@ let API = {
           of `animals` should not be hard coded here.
     */
 
+<<<<<<< HEAD
     get(resource, id) {
+=======
+    get(resource,id ) {
+>>>>>>> master
         return fetch(`${remoteURL}/${resource}/${id}`).then(response => response.json())
     },
     getAndExpand(id, resource, expanded) {
@@ -15,13 +23,21 @@ let API = {
     getAll(resource) {
         return fetch(`${remoteURL}/${resource}`).then(response => response.json())
     },
+<<<<<<< HEAD
     delete(resource, id) {
+=======
+    delete(resource,id) {
+>>>>>>> master
         return fetch(`${remoteURL}/${resource}/${id}`, {
             method: "DELETE"
         })
             .then(response => response.json())
     },
+<<<<<<< HEAD
     post(resource, newObject) {
+=======
+    post(resource,newObject) {
+>>>>>>> master
         return fetch(`${remoteURL}/${resource}`, {
             method: "POST",
             headers: {
@@ -30,7 +46,11 @@ let API = {
             body: JSON.stringify(newObject)
         }).then(response => response.json())
     },
+<<<<<<< HEAD
     update(resource, editedObject) {
+=======
+    update(resource,editedObject) {
+>>>>>>> master
         return fetch(`${remoteURL}/${resource}/${editedObject.id}`, {
             method: "PUT",
             headers: {
@@ -51,4 +71,8 @@ let API = {
 
 }
 
+<<<<<<< HEAD
 export default API
+=======
+export default API 
+>>>>>>> master
