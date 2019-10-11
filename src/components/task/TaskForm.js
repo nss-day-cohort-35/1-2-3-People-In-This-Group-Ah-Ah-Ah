@@ -6,7 +6,7 @@ import API from "../../modules/APIManager"
 
 class TaskForm extends Component {
     state = {
-        userId: "",
+        userId: parseInt(localStorage.getItem("userID")),
         title: "",
         date: "",
         complete: "",
@@ -24,10 +24,10 @@ class TaskForm extends Component {
     constructNewTask = event => {
         event.preventDefault()
         const newTask = {
-            title: this.state.taskId,
+            title: this.state.title,
             date: this.state.date,
             complete: false,
-            userId: parseInt(localStorage.getItem("userID"))
+            userId: this.state.userId
         }
         API.post("tasks", newTask)
             .then(() => this.props.history.push("/tasks"));
@@ -35,64 +35,64 @@ class TaskForm extends Component {
 
     // build JSX that will display on DOM
     render() {
-        let keaton4President = {
-            toggle: () => {
+        // let keaton4President = {
+        //     toggle: () => {
 
-                this.setState({ collapse: !this.state.collapse });
-            },
-            onEntering: () => {
-                this.setState({ status: 'Opening...' });
-            },
+        //         this.setState({ collapse: !this.state.collapse });
+        //     },
+        //     onEntering: () => {
+        //         this.setState({ status: 'Opening...' });
+        //     },
 
-            onEntered: () => {
-                this.setState({ status: 'Opened' });
-            },
+        //     onEntered: () => {
+        //         this.setState({ status: 'Opened' });
+        //     },
 
-            onExiting: () => {
-                this.setState({ status: 'Closing...' });
-            },
+        //     onExiting: () => {
+        //         this.setState({ status: 'Closing...' });
+        //     },
 
-            onExited: () => {
-                this.setState({ status: 'Closed' });
-            }
-        }
+        //     onExited: () => {
+        //         this.setState({ status: 'Closed' });
+        //     }
+        // }
 
         return (
             <>
-                <Collapse isOpen={this.state.collapse}
-                    onEntering={keaton4President.onEntering}
-                    onEntered={keaton4President.onEntered}
-                    onExiting={keaton4President.onExiting}
-                    onExited={keaton4President.onExited}>
-                    <Form onSubmit={this.constructNewTask} className="taskForm">
-                        <FormGroup className="taskFormGroup">
-                            <Label htmlFor="task">Task</Label>
-                            <Input
-                                type="text"
-                                required
-                                className="taskFormInput"
-                                onChange={this.handleFieldChange}
-                                id="task"
-                                placeholder="Task Name"></Input>
-                        </FormGroup>
-                        <FormGroup className="dateInput">
-                            <Label htmlFor="completeDate">Date</Label>
-                            <Input
-                                type="date"
-                                required
-                                className="dateForm"
-                                onChange={this.handleFieldChange}
-                                id="completeDate"
-                                value={this.state.completeDate}
-                            />
-                        </FormGroup>
-                        <Button
-                            type="submit"
-                            className="btn btn-primary">
-                            Submit
+                {/* // <Collapse isOpen={this.state.collapse}
+                //     onEntering={keaton4President.onEntering}
+                //     onEntered={keaton4President.onEntered}
+                //     onExiting={keaton4President.onExiting}
+                //     onExited={keaton4President.onExited}> */}
+                <Form onSubmit={this.constructNewTask} className="taskForm">
+                    <FormGroup className="taskFormGroup">
+                        <Label htmlFor="task">Task</Label>
+                        <Input
+                            type="text"
+                            required
+                            className="taskFormInput"
+                            onChange={this.handleFieldChange}
+                            id="title"
+                            placeholder="Task Name"></Input>
+                    </FormGroup>
+                    <FormGroup className="dateInput">
+                        <Label htmlFor="completeDate">Date</Label>
+                        <Input
+                            type="date"
+                            required
+                            className="dateForm"
+                            onChange={this.handleFieldChange}
+                            id="date"
+                            value={this.state.completeDate}
+                        />
+                    </FormGroup>
+                    <Button
+                        type="submit"
+                        className="btn btn-primary">
+                        Submit
                 </Button>
-                    </Form>
-                </Collapse>
+                </Form>
+                {/* </Collapse> */}
             </>
         )
     }

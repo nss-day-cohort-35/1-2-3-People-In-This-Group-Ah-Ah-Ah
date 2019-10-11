@@ -10,7 +10,7 @@ import EventEditForm from "./event/EventEditForm"
 
 import TaskList from "./task/TaskList"
 import TaskForm from "./task/TaskForm"
-import TaskEditForm from "./task/TaskForm"
+import TaskEditForm from "./task/TaskEditForm"
 
 import FriendList from "./friend/FriendList"
 
@@ -18,8 +18,8 @@ import MessageList from "./message/MessageList"
 import MessageForm from "./message/MessageForm"
 import MessageEditForm from "./message/MessageEditForm"
 
-import Home from './home/Home'
-import Login from './auth/Login'
+import Home from './home/home'
+import Login from './auth/login'
 
 
 class ApplicationViews extends Component {
@@ -84,16 +84,16 @@ class ApplicationViews extends Component {
 
         {/* Task Routes */}
         <Route exact path="/tasks" render={props => {
-          if (this.props.user) {
-            return <TaskList {...props} />
-          } else {
-            return <Redirect to="/login" />
-          }
+          // if (this.props.user) {
+          return <TaskList {...props} />
+          // } else {
+          //   return <Redirect to="/login" />
+          // }
         }} />
         <Route path="/tasks/new" render={(props) => {
           return <TaskForm {...props} />
         }} />
-        <Route path="/tasks/:eventId(\d+)/edit" render={props => {
+        <Route path="/tasks/:taskId(\d+)/edit" render={props => {
           return <TaskEditForm {...props} />
         }} />
 
