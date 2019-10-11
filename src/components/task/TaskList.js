@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
-// import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Link } from 'react-router-dom'
+import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import TaskCard from './TaskCard'
 import API from '../../modules/APIManager';
 
@@ -40,7 +40,7 @@ class TaskList extends Component {
     render() {
         return (
             <div>
-
+                <Button onClick={() => { this.props.history.push("/tasks/new") }}>Create Task</Button>
                 {this.state.tasks.map(task =>
                     <TaskCard key={task.id}
                         getData={this.getData}
