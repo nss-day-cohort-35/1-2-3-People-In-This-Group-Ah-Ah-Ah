@@ -1,4 +1,4 @@
-const remoteURL = "http://localhost:5002"
+const remoteURL = "http://localhost:8088"
 let API = {
     /*
           Since the purpose of this module is to be used by
@@ -6,7 +6,7 @@ let API = {
           of `animals` should not be hard coded here.
     */
 
-    get(resource,id ) {
+    get(resource, id ) {
         return fetch(`${remoteURL}/${resource}/${id}`).then(response => response.json())
     },
     getAndExpand(id, resource, expanded) {
