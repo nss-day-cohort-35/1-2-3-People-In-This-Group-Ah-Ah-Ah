@@ -38,7 +38,7 @@ class TaskEditForm extends Component {
         API.get("tasks", this.props.match.params.taskId)
             .then(task => {
                 this.setState({
-                    title: task.name,
+                    title: task.title,
                     date: task.date,
                     complete: false,
                     userId: task.userId
