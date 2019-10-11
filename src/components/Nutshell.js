@@ -53,7 +53,9 @@ class Nutshell extends Component {
   render() {
     return (
       <>
+      {(this.props.user) ?
         <NavBar user={this.state.user} clearUser={this.clearUser} />
+        : null}
         <ApplicationViews user={this.state.user}
           setUser={this.setUser} />
       </>
