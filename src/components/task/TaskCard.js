@@ -11,6 +11,7 @@ class TaskCard extends Component {
     }
 
     render() {
+
         return (
             <Form className="card">
                 <FormGroup className="taskCard">

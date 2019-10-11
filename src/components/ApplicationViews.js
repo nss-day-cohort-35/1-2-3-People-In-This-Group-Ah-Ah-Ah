@@ -55,7 +55,7 @@ class ApplicationViews extends Component {
         }} />
 
         <Route path="/tasks/:taskId(\d+)/edit" render={props => {
-          return <TaskEditForm {...props} tasks={this.state.tasks} updateTask={this.updateTask} />
+          return <TaskEditForm {...props} />
         }} />
 
       </React.Fragment>

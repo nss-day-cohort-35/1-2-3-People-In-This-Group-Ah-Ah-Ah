@@ -41,7 +41,11 @@ class TaskList extends Component {
             <div>
 
                 {this.state.tasks.map(task =>
-                    <TaskCard key={task.id} task={task} deleteTask={this.deleteTask} {...this.props} className="card" />
+                    <TaskCard key={task.id}
+                        task={task}
+                        deleteTask={this.deleteTask}
+                        {...this.props}
+                        className="card" />
 
                 )}
 
