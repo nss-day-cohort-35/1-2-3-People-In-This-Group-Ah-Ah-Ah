@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import API from "./../../modules/APIManager"
-import {Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row} from 'reactstrap';
-import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa"
+import {Card, CardImg, CardBody, CardTitle, CardSubtitle, Button, Row} from 'reactstrap';
+import {FaRegTrashAlt } from "react-icons/fa"
 
 class EventCard extends Component {
     handleDelete = (id) => {
@@ -22,7 +22,7 @@ render() {
             <CardTitle>{this.props.event.title}</CardTitle>
             <CardSubtitle>{this.props.event.date}</CardSubtitle>
           </CardBody>
-          <Link to={`/events/${this.props.eventId}`} type="button"><Button>Details</Button></Link>
+          <Link to={`/events/${this.props.event.id}`} type="button"><Button>Details</Button></Link>
           <Button type="button" onClick={()=> this.handleDelete(this.props.event.id)}><FaRegTrashAlt/></Button>
         </Card>
      </div>

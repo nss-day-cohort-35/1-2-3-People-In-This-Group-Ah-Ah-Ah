@@ -11,7 +11,7 @@ class EventDetails extends Component {
     date: "",
     location: "",
     img: "",
-    loadingStatus: true,
+    loadingStatus: false,
   }
   handleDelete = () => {
     //invoke the delete function in AnimalManger and re-direct to the animal list.
@@ -21,7 +21,7 @@ class EventDetails extends Component {
 }
 
   componentDidMount(){
-    //get(id) from API and hang on to the data; put it into state
+
     API.get("events", this.props.eventId)
     .then((event) => {
        if (event.name) {
@@ -40,7 +40,7 @@ class EventDetails extends Component {
 
   render () {
    //if (this.state.loadingStatus) return <p>Loading...</p>
-   if (!this.state.loadingStatus && this.state.animal) {
+   //if (!this.state.loadingStatus && this.state.animal) {
 
     return (
         <div>
@@ -54,15 +54,17 @@ class EventDetails extends Component {
             <CardText>{this.state.description}</CardText>
             <CardText>{this.state.img}</CardText>
           </CardBody>
-          <Button type="button"><FaRegEdit/>Details</Button>
-          <Button type="button" disabled={this.state.loadingStatus} onClick={this.handleDelete}><FaRegTrashAlt/></Button>
+          <Row>
+            <Button type="button"><FaRegEdit/></Button>
+            <Button type="button" disabled={this.state.loadingStatus} onClick={this.handleDelete}><FaRegTrashAlt/></Button>
+          </Row>
         </Card>
      </div>
     );
-    } else {
-    return <Redirect to="/"/>
-    }
+   // } else {
+  //  return <Redirect to="/"/>
+  //  }
   }
 }
 
-export default EventDetails;
+export default EventDetails

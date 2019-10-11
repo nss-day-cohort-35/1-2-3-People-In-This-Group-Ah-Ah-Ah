@@ -74,7 +74,7 @@ class ApplicationViews extends Component {
           return <EventEditForm {...props} />
         }} />
         <Route exact path="/events/:eventId(\d+)" render={(props) => {
-          return <EventDetails animalId={parseInt(props.match.params.animalId)}{...props} />
+          return <EventDetails eventId={parseInt(props.match.params.eventId)} {...props} />
         }} />
 
 
