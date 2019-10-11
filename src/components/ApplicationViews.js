@@ -33,12 +33,12 @@ class ApplicationViews extends Component {
           return <Home />
         }} />
 
-      {/* Make sure you add the `exact` attribute here */}
-       <Route exact path="/" render={props => {
+        {/* Make sure you add the `exact` attribute here */}
+        <Route exact path="/" render={props => {
           if (this.props.user) {
-              return <Home {...props} />
+            return <Home {...props} />
           } else {
-              return <Redirect to="/login" />
+            return <Redirect to="/login" />
           }
         }} />
 
@@ -46,9 +46,9 @@ class ApplicationViews extends Component {
         {/* Article Routes */}
         <Route exact path="/articles" render={props => {
           if (this.props.user) {
-              return <ArticleList {...props} />
+            return <ArticleList {...props} />
           } else {
-              return <Redirect to="/login" />
+            return <Redirect to="/login" />
           }
         }} />
         <Route path="/articles/new" render={(props) => {
@@ -56,16 +56,16 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/articles/:articleId(\d+)/edit" render={props => {
           return <ArticleEditForm {...props} />
-        }}/>
+        }} />
 
 
 
-         {/* Event Routes */}
+        {/* Event Routes */}
         <Route exact path="/events" render={props => {
           if (this.props.user) {
-              return <EventList {...props} />
+            return <EventList {...props} />
           } else {
-              return <Redirect to="/login" />
+            return <Redirect to="/login" />
           }
         }} />
         <Route path="/events/new" render={(props) => {
@@ -73,7 +73,7 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/events/:eventId(\d+)/edit" render={props => {
           return <EventEditForm {...props} />
-        }}/>
+        }} />
         <Route exact path="/events/:eventId(\d+)" render={(props) => {
           return <EventDetails animalId={parseInt(props.match.params.animalId)}{...props} />
         }} />
@@ -84,11 +84,11 @@ class ApplicationViews extends Component {
 
 
         {/* Task Routes */}
-       <Route exact path="/tasks" render={props => {
+        <Route exact path="/tasks" render={props => {
           if (this.props.user) {
-              return <TaskList {...props} />
+            return <TaskList {...props} />
           } else {
-              return <Redirect to="/login" />
+            return <Redirect to="/login" />
           }
         }} />
         <Route path="/tasks/new" render={(props) => {
@@ -96,7 +96,7 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/tasks/:eventId(\d+)/edit" render={props => {
           return <TaskEditForm {...props} />
-        }}/>
+        }} />
 
 
 
@@ -104,9 +104,9 @@ class ApplicationViews extends Component {
         {/* Friend Routes */}
         <Route exact path="/friends" render={props => {
           if (this.props.user) {
-              return <FriendList {...props} />
+            return <FriendList {...props} />
           } else {
-              return <Redirect to="/login" />
+            return <Redirect to="/login" />
           }
         }} />
 
@@ -115,9 +115,9 @@ class ApplicationViews extends Component {
         {/* Message Routes */}
         <Route exact path="/message" render={props => {
           if (this.props.user) {
-              return <MessageList {...props} />
+            return <MessageList {...props} />
           } else {
-              return <Redirect to="/login" />
+            return <Redirect to="/login" />
           }
         }} />
         <Route path="/message/new" render={(props) => {
@@ -125,11 +125,11 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/message/:messageId(\d+)/edit" render={props => {
           return <MessageEditForm {...props} />
-        }}/>
+        }} />
         <Route path="/login" render={props => {
           return <Login setUser={this.props.setUser} {...props} />
         }} />
-  </React.Fragment>
+      </React.Fragment>
     )
   }
 }
