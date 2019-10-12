@@ -4,9 +4,8 @@ import { BrowserRouter as Router } from "react-router-dom"
 import Nutshell from './components/Nutshell'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
-
 ReactDOM.render(
   <Router>
-      <Nutshell />
+    <Nutshell />
   </Router>
   , document.getElementById('root'))

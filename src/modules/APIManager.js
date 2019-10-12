@@ -6,7 +6,7 @@ let API = {
           of `animals` should not be hard coded here.
     */
 
-    get(resource, id ) {
+    get(resource, id) {
         return fetch(`${remoteURL}/${resource}/${id}`).then(response => response.json())
     },
     getAndExpand(id, resource, expanded) {
@@ -16,8 +16,7 @@ let API = {
         return fetch(`${remoteURL}/${resource}`).then(response => response.json())
     },
     delete(resource, id) {
-        console.log(`${remoteURL}/${resource}/${id}`)
-          return fetch(`${remoteURL}/${resource}/${id}`, {
+        return fetch(`${remoteURL}/${resource}/${id}`, {
             method: "DELETE"
          })
             .then(response => response.json())
@@ -31,7 +30,7 @@ let API = {
             body: JSON.stringify(newObject)
         }).then(response => response.json())
     },
-    update(resource,editedObject) {
+    update(resource, editedObject) {
         return fetch(`${remoteURL}/${resource}/${editedObject.id}`, {
             method: "PUT",
             headers: {
