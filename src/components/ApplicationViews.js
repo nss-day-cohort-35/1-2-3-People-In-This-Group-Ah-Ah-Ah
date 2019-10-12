@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import ArticleList from "./article/ArticleList";
 import ArticleForm from "./article/ArticleForm";
 import Login from "./auth/Login";
-import Home from './home/home';
+import Home from './home/Home';
 
 
 
@@ -15,7 +15,7 @@ class ApplicationViews extends Component {
       <React.Fragment>
 
         <Route
-          exact path="/home" render={props => {
+          exact path="/Home" render={props => {
             return <Home />
             // Remove null and return the component which will show news articles
           }}
