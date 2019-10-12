@@ -19,7 +19,7 @@ import MessageList from "./message/MessageList"
 import MessageForm from "./message/MessageForm"
 import MessageEditForm from "./message/MessageEditForm"
 
-import Home from './home/home'
+import Home from './home/Home'
 import Login from './auth/login'
 
 
