@@ -78,10 +78,6 @@ class ApplicationViews extends Component {
         }} />
 
 
-
-
-
-
         {/* Task Routes */}
         <Route exact path="/tasks" render={props => {
           // if (this.props.user) {
@@ -96,7 +92,6 @@ class ApplicationViews extends Component {
         <Route path="/tasks/:taskId(\d+)/edit" render={props => {
           return <TaskEditForm {...props} />
         }} />
-
 
 
 

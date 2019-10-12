@@ -5,11 +5,10 @@ import {Card, CardImg, CardBody, CardTitle, CardSubtitle, Button, Row} from 'rea
 import {FaRegTrashAlt } from "react-icons/fa"
 
 class EventCard extends Component {
-    handleDelete = (id) => {
-
-        API.delete("events", id)
-        .then(() => this.props.getData())
-      }
+  handleDelete = (id) => {
+    API.delete("events", id)
+        .then(() => this.props.getData());
+}
 
 render() {
     return (

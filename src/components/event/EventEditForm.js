@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import API from "../../modules/APIManager"
-import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 class EventEditForm extends Component {
     //set the initial state
