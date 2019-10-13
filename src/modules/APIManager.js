@@ -1,10 +1,6 @@
 const remoteURL = "http://localhost:8088"
+
 let API = {
-    /*
-          Since the purpose of this module is to be used by
-          all of the more specialized ones, then the string
-          of `animals` should not be hard coded here.
-    */
 
     get(resource, id) {
         return fetch(`${remoteURL}/${resource}/${id}`).then(response => response.json())
@@ -43,7 +39,7 @@ let API = {
         return fetch(`${remoteURL}/${firstResource}/${id}?_embed=${secondResource}`)
             .then(response => response.json())
     },
-    searchDatabase(search, database, type) {
+     searchDatabase(search, database, type) {
         return fetch(`${remoteURL}/${database}?${type}_like=${search}`)
             .then(response => response.json())
     }

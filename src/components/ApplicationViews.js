@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import ArticleList from "./article/ArticleList"
 import ArticleForm from "./article/ArticleForm"
 import ArticleEditForm from "./article/ArticleEditForm"
-
 import EventList from "./event/EventList"
 import EventForm from "./event/EventForm"
 import EventDetails from "./event/EventDetails"
@@ -19,7 +18,7 @@ import MessageList from "./message/MessageList"
 import MessageForm from "./message/MessageForm"
 import MessageEditForm from "./message/MessageEditForm"
 
-import Home from './home/home'
+import Home from './home/Home'
 import Login from './auth/login'
 
 
@@ -75,12 +74,8 @@ class ApplicationViews extends Component {
           return <EventEditForm {...props} />
         }} />
         <Route exact path="/events/:eventId(\d+)" render={(props) => {
-          return <EventDetails animalId={parseInt(props.match.params.animalId)}{...props} />
+          return <EventDetails eventId={parseInt(props.match.params.eventId)} {...props} />
         }} />
-
-
-
-
 
 
         {/* Task Routes */}
@@ -97,7 +92,6 @@ class ApplicationViews extends Component {
         <Route path="/tasks/:taskId(\d+)/edit" render={props => {
           return <TaskEditForm {...props} />
         }} />
-
 
 
 
