@@ -1,7 +1,6 @@
 const remoteURL = "http://localhost:8088"
 
 let API = {
-
     get(resource, id) {
         return fetch(`${remoteURL}/${resource}/${id}`).then(response => response.json())
     },
