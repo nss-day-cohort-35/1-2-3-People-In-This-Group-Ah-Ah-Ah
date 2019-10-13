@@ -19,7 +19,7 @@ import MessageList from "./message/MessageList"
 import MessageForm from "./message/MessageForm"
 import MessageEditForm from "./message/MessageEditForm"
 
-import Home from './home/home'
+import Home from './home/Home'
 import Login from './auth/login'
 
 
@@ -113,14 +113,14 @@ class ApplicationViews extends Component {
 
 
         {/* Message Routes */}
-        <Route exact path="/message" render={props => {
+        <Route exact path="/messages" render={props => {
           if (this.props.user) {
             return <MessageList {...props} />
           } else {
             return <Redirect to="/login" />
           }
         }} />
-        <Route path="/message/new" render={(props) => {
+        <Route path="/messages/new" render={(props) => {
           return <MessageForm {...props} />
         }} />
         <Route path="/message/:messageId(\d+)/edit" render={props => {
