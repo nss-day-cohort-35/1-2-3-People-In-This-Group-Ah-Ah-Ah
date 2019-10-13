@@ -11,8 +11,7 @@ class EventForm extends Component {
         date: "",
         location: "",
         img: "",
-        loadingStatus: true,
-        event: "",
+        description: "",
         loadingStatus: false,
         modal: true
     }
@@ -38,9 +37,10 @@ class EventForm extends Component {
                 title: this.state.title,
                 date: this.state.date,
                 location: this.state.location,
+                description: this.state.description,
                 img: this.state.img,
-                event: this.state.event,
             };
+
         API.post("events", event)
           .then(() => this.props.history.push("/events"))
     }
@@ -55,7 +55,7 @@ class EventForm extends Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalBody>
            <Form>
-            <ModalHeader toggle={this.toggle}>New Post</ModalHeader>
+            <ModalHeader toggle={this.toggle}>New Event</ModalHeader>
             <FormGroup>
               <Input type="text" name="title" id="title" onChange={this.handleFieldChange} placeholder="place title"/>
             </FormGroup>
@@ -64,16 +64,16 @@ class EventForm extends Component {
                <Input type="date" name="date" id="date" onChange={this.handleFieldChange} placeholder="place date"/>
             </FormGroup>
             <FormGroup>
-                <Label for="description">Location</Label>
-                <Input type="text" name="location" id="location" onChange={this.handleFieldChange} placeholder="place description"/>
+                <Label for="location">Location</Label>
+                <Input type="text" name="location" id="location" onChange={this.handleFieldChange} placeholder="place location"/>
             </FormGroup>
             <FormGroup>
-                <Label for="date">Image</Label>
+                <Label for="img">Image</Label>
                 <Input type="text" name="img" id="img" onChange={this.handleFieldChange} placeholder="place image"/>
             </FormGroup>
             <FormGroup>
-                <Label for="date">URL</Label>
-                <Input type="text" name="url" id="image" onChange={this.handleFieldChange} placeholder="place url"/>
+                <Label for="description">Description</Label>
+                <Input type="text" name="description" id="description" onChange={this.handleFieldChange} placeholder="place url"/>
             </FormGroup>
            </Form>
           </ModalBody>

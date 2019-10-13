@@ -27,14 +27,7 @@ class EventList extends Component {
     }
 
 componentDidMount(){
-    console.log('Component did mount!')
-
-    API.getAll("events")
-    .then((events) => {
-        this.setState({
-            events: events
-        })
-    })
+    this.getData()
 }
 
 render() {

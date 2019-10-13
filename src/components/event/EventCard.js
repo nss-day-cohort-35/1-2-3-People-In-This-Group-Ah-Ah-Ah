@@ -22,7 +22,7 @@ render() {
             <CardSubtitle>{this.props.event.date}</CardSubtitle>
           </CardBody>
           <Link to={`/events/${this.props.event.id}`} type="button"><Button>Details</Button></Link>
-          <Button type="button" onClick={()=> this.handleDelete(this.props.event.id)}><FaRegTrashAlt/></Button>
+          <Button type="button" onClick={()=> this.props.deleteEvent(this.props.event.id)}><FaRegTrashAlt/></Button>
         </Card>
      </div>
 );

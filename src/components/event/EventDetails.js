@@ -9,6 +9,7 @@ class EventDetails extends Component {
     title: "",
     date: "",
     location: "",
+    description: "",
     img: "",
     loadingStatus: true,
     event: ""
@@ -29,6 +30,7 @@ class EventDetails extends Component {
         title: event.title,
         date: event.date,
         location: event.location,
+        description: event.description,
         img: event.img,
         loadingStatus: false,
         event: event
@@ -49,12 +51,13 @@ class EventDetails extends Component {
           <CardBody>
             <CardTitle>{this.state.title}</CardTitle>
             <CardSubtitle>{this.state.date}</CardSubtitle>
+            <CardText>{this.state.location}</CardText>
             <CardText>{this.state.description}</CardText>
             <CardText>{this.state.img}</CardText>
           </CardBody>
           <Row>
             <Button type="button" onClick={() => { this.props.history.push(`/events/${this.props.eventId}/edit`) }}><FaRegEdit/></Button>
-            <Button type="button" disabled={this.state.loadingStatus} onClick={this.handleDelete}><FaRegTrashAlt/></Button>
+           {/*<Button type="button" disabled={this.state.loadingStatus} onClick={this.handleDelete}><FaRegTrashAlt/></Button> */}
           </Row>
         </Card>
      </div>

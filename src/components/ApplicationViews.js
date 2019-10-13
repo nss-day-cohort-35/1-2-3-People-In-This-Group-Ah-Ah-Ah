@@ -19,7 +19,7 @@ import MessageForm from "./message/MessageForm"
 import MessageEditForm from "./message/MessageEditForm"
 
 import Home from './home/Home'
-import Login from './auth/Login'
+import Login from './auth/login'
 
 
 class ApplicationViews extends Component {
