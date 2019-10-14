@@ -2,12 +2,6 @@ import React, { Component } from "react";
 import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
 //import "./Nutshell.css";
-// import AnimalCard from './animal/AnimalCard';
-// import EmployeeCard from './employee/EmployeeCard';
-// import LocationCard from './location/LocationCard';
-// import OwnerCard from './owner/OwnerCard';
-
-
 class Nutshell extends Component {
 
   state = {
@@ -58,6 +52,7 @@ class Nutshell extends Component {
         <ApplicationViews //user={this.state.user}
           //setUser={this.setUser}
            />
+
       </>
     )
   }

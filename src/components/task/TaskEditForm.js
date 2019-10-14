@@ -1,5 +1,8 @@
 import React, { Component } from "react"
+
+=======
 import { Button, Form, FormGroup, Label, Input} from "reactstrap";
+
 import API from "../../modules/APIManager";
 
 class TaskEditForm extends Component {
