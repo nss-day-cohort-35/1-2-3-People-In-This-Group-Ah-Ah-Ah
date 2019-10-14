@@ -1,16 +1,14 @@
 import React, { Component } from "react"
-import {Button, Form, FormGroup, Label, Input} from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import API from "../../modules/APIManager";
 
 class MessageEditForm extends Component {
     //set the initial state
     state = {
         userId: parseInt(localStorage.getItem("userId")),
-       messageMain: "",
-        date: "",
-        collapse: false,
+        messageMain: "",
         loadingStatus: true,
-        status: ""
+ 
     };
     // set state to value of input
     handleFieldChange = event => {
@@ -23,9 +21,8 @@ class MessageEditForm extends Component {
         event.preventDefault()
         this.setState({ loadingStatus: true });
         const editedMessage = {
-            id: this.props.match.params.Id,
-            message: this.state.message,
-            date: this.state.date,
+            id: this.props.match.params.messageId,
+            messageMain: this.state.messageMain,
             userId: this.state.userId
         };
         // push edited task
@@ -57,13 +54,9 @@ class MessageEditForm extends Component {
                             required
                             className="messageFormInput"
                             onChange={this.handleFieldChange}
-                            id="message"
+                            id="messageMain"
                             placeholder="Edit Message"
-                            value ={this.state.messageMain}></Input>
-                    </FormGroup>
-                    <FormGroup className="dateInput">
-                        <Label htmlFor="Date">Date</Label>
-                    
+                            value={this.state.messageMain}></Input>
                     </FormGroup>
                     <Button
                         type="submit"

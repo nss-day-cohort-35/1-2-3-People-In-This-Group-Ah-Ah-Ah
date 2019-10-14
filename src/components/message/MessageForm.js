@@ -59,11 +59,11 @@ class MessageForm extends Component {
 
         return (
             <>
-                {/* // <Collapse isOpen={this.state.collapse}
-                //     onEntering={keaton4President.onEntering}
-                //     onEntered={keaton4President.onEntered}
-                //     onExiting={keaton4President.onExiting}
-                //     onExited={keaton4President.onExited}> */}
+                {/* <Collapse isOpen={this.state.collapse}
+                    onEntering={keaton4President.onEntering}
+                    onEntered={keaton4President.onEntered}
+                    onExiting={keaton4President.onExiting}
+                    onExited={keaton4President.onExited}> */}
                 <Form onSubmit={this.constructNewMessage} className="messageForm">
                     <FormGroup className="messageFormGroup">
                         <Label htmlFor="message">Message</Label>
