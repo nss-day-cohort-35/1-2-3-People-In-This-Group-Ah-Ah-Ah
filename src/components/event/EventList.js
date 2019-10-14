@@ -3,8 +3,9 @@ import EventCard from "./EventCard"
 import API from  "../../modules/APIManager"
 import {Button} from 'reactstrap';
 
+//Test comments
 class EventList extends Component {
-  //This holds the state of the Events
+  //This holds the state of the Events 
     state = {
       events: [],
     }
@@ -31,7 +32,7 @@ componentDidMount(){
 }
 
 render() {
-    console.log("LOCATIONS LIST: Render");
+    //console.log("LOCATIONS LIST: Render");
 
     return (
       <>
