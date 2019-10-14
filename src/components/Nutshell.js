@@ -1,18 +1,8 @@
 import React, { Component } from "react";
 import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
-import "./NutShell.css";
-// import AnimalCard from './animal/AnimalCard';
-// import EmployeeCard from './employee/EmployeeCard';
-// import LocationCard from './location/LocationCard';
-// import OwnerCard from './owner/OwnerCard';
-
-
-
-
+//import "./Nutshell.css";
 class Nutshell extends Component {
-
-
 
   state = {
     user: false
@@ -51,13 +41,18 @@ class Nutshell extends Component {
   }
 
   render() {
+    console.log("guess what", this.props.user)
     return (
       <>
-        {/* {(this.props.user) ? */}
-          <NavBar user={this.state.user} clearUser={this.clearUser} />
-          {/* : null} */}
-        <ApplicationViews user={this.state.user}
-          setUser={this.setUser} />
+      {/*{(this.props.user) */}
+        <NavBar
+        //user={this.state.user} clearUser={this.clearUser}
+        />
+        
+        <ApplicationViews //user={this.state.user}
+          //setUser={this.setUser}
+           />
+
       </>
     )
   }

@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import ArticleList from "./article/ArticleList"
 import ArticleForm from "./article/ArticleForm"
 import ArticleEditForm from "./article/ArticleEditForm"
-
 import EventList from "./event/EventList"
 import EventForm from "./event/EventForm"
 import EventDetails from "./event/EventDetails"
@@ -21,6 +20,7 @@ import MessageEditForm from "./message/MessageEditForm"
 
 import Home from './home/Home'
 import Login from './auth/login'
+//import Nutshell from './Nutshell'
 
 
 class ApplicationViews extends Component {
@@ -29,28 +29,29 @@ class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
-        <Route exact path="/" render={(props) => {
+        <Route exact path="/Home" render={(props) => {
           return <Home />
         }} />
 
         {/* Make sure you add the `exact` attribute here */}
         <Route exact path="/" render={props => {
-          if (this.props.user) {
+        //  if (this.props.user) {
             return <Home {...props} />
-          } else {
-            return <Redirect to="/login" />
-          }
+         // } else {
+          //  return <Redirect to="/login" />
+        //  }
         }} />
 
 
         {/* Article Routes */}
         <Route exact path="/articles" render={props => {
-          if (this.props.user) {
+         // if (this.props.user) {
             return <ArticleList {...props} />
-          } else {
-            return <Redirect to="/login" />
-          }
+          //} else {
+           // return <Redirect to="/login" />
+          //}
         }} />
+
         <Route path="/articles/new" render={(props) => {
           return <ArticleForm {...props} />
         }} />
@@ -62,12 +63,12 @@ class ApplicationViews extends Component {
 
         {/* Event Routes */}
         <Route exact path="/events" render={props => {
-          if (this.props.user) {
+          //if (this.props.user) {
             return <EventList {...props} />
-          } else {
-            return <Redirect to="/login" />
-          }
-        }} />
+         // } else {
+          //  return <Redirect to="/login" />
+          }} />
+          
         <Route path="/events/new" render={(props) => {
           return <EventForm {...props} />
         }} />
@@ -75,12 +76,8 @@ class ApplicationViews extends Component {
           return <EventEditForm {...props} />
         }} />
         <Route exact path="/events/:eventId(\d+)" render={(props) => {
-          return <EventDetails animalId={parseInt(props.match.params.animalId)}{...props} />
+          return <EventDetails eventId={parseInt(props.match.params.eventId)} {...props} />
         }} />
-
-
-
-
 
 
         {/* Task Routes */}
@@ -97,7 +94,6 @@ class ApplicationViews extends Component {
         <Route path="/tasks/:taskId(\d+)/edit" render={props => {
           return <TaskEditForm {...props} />
         }} />
-
 
 
 
