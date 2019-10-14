@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import API from "./../../modules/APIManager"
-import { Redirect } from "react-router-dom";
 import {Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row} from 'reactstrap';
-import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa"
+import { FaRegEdit} from "react-icons/fa"
 
 class EventDetails extends Component {
   state = {

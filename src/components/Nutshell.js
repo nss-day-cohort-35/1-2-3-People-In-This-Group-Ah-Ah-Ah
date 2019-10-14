@@ -8,8 +8,6 @@ import ApplicationViews from "./ApplicationViews";
 // import OwnerCard from './owner/OwnerCard';
 
 
-
-
 class Nutshell extends Component {
 
   state = {
@@ -49,13 +47,17 @@ class Nutshell extends Component {
   }
 
   render() {
+    console.log("guess what", this.props.user)
     return (
       <>
-      {(this.props.user) ?
-        <NavBar user={this.state.user} clearUser={this.clearUser} />
-        : null}
-        <ApplicationViews user={this.state.user}
-          setUser={this.setUser} />
+      {/*{(this.props.user) */}
+        <NavBar
+        //user={this.state.user} clearUser={this.clearUser}
+        />
+        
+        <ApplicationViews //user={this.state.user}
+          //setUser={this.setUser}
+           />
       </>
     )
   }

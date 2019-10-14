@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import API from "./../../modules/APIManager"
 import {Card, CardImg, CardBody, CardTitle, CardSubtitle, Button, Row} from 'reactstrap';
 import {FaRegTrashAlt } from "react-icons/fa"
+//sadasda
 
 class EventCard extends Component {
   handleDelete = (id) => {

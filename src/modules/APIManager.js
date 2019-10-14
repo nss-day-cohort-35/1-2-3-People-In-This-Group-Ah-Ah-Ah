@@ -13,7 +13,7 @@ let API = {
     delete(resource, id) {
         return fetch(`${remoteURL}/${resource}/${id}`, {
             method: "DELETE"
-        })
+         })
             .then(response => response.json())
     },
     post(resource, newObject) {
