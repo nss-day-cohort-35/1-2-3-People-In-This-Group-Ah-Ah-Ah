@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import API from '../../modules/APIManager';
 import {Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+<<<<<<< HEAD
 import "./Article.css"
+=======
+//import "./Article.css"
+>>>>>>> master
 
 class ArticleForm extends Component {
     //set the initial state

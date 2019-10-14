@@ -12,8 +12,6 @@ import ApplicationViews from "./ApplicationViews";
 
 class Nutshell extends Component {
 
-
-
   state = {
     user: false
   }
