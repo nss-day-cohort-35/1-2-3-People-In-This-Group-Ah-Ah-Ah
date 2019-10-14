@@ -6,7 +6,7 @@ import API from "../../modules/APIManager"
 
 class MessageForm extends Component {
     state = {
-        // userId: parseInt(localStorage.getItem("userID")),
+        // userId: parseInt(sessionStorage.getItem("userID")),
         messageMain: "",
         date: "",
         collapse: false,
