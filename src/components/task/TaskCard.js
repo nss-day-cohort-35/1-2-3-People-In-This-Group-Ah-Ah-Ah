@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-// import { Link } from "react-router-dom";
 import API from '../../modules/APIManager'
-import { Card, FormGroup, Label, CardTitle, CardSubtitle, Button, Input, } from "reactstrap";
+import { Card, Row, FormGroup, Label, CardTitle, CardSubtitle, Button, Input, } from "reactstrap";
 import CardBody from 'reactstrap/lib/CardBody';
-// import CardImg from 'reactstrap/lib/CardImg';
+import { FaRegTrashAlt, FaRegEdit} from "react-icons/fa";
+
 
 class TaskCard extends Component {
 
@@ -11,16 +11,13 @@ class TaskCard extends Component {
         API.delete("tasks", id)
             .then(() => this.props.getData());
     }
-
+//renders
     render() {
 
         return (
-            <div><Card className="card">
-
-                {/* <CardImg>
-                        <img src={} alt="" />
-                    </CardImg> */}
-                <CardBody className="taskCard">
+            <div>
+              <Card className="mainCard">
+                <CardBody>
                     <CardTitle>Task: <span className="cardTaskName">{this.props.task.title}</span></CardTitle>
                     <CardSubtitle>Date: {this.props.task.date} </CardSubtitle >
                     <FormGroup check>
@@ -29,8 +26,10 @@ class TaskCard extends Component {
                             Completed
                         </Label>
                     </FormGroup>
-                    <Button type="button" onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}>Edit</Button>
-                    <Button type="button" onClick={() => this.handleDelete(this.props.task.id)}>Delete</Button>
+                    <Row className="buttonFlex">
+                      <Button className="button" type="button" onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}><FaRegEdit/></Button>
+                      <Button className="button" type="button" onClick={() => this.handleDelete(this.props.task.id)}><FaRegTrashAlt/></Button>
+                    </Row>
                 </CardBody>
             </Card>
             </div>

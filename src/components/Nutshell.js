@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
+<<<<<<< HEAD
+import "./NutShell.css";
+
+
+=======
 //import "./Nutshell.css";
+>>>>>>> master
 class Nutshell extends Component {
 
   state = {
@@ -48,7 +54,7 @@ class Nutshell extends Component {
         <NavBar
         user={this.state.user} clearUser={this.clearUser}
         />
-        
+
         <ApplicationViews user={this.state.user}
           setUser={this.setUser}
            />

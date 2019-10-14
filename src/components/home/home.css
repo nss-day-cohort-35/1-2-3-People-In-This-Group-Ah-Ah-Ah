@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Creepster&display=swap');
 
-.Nutshell {
+.home {
     font-family: 'Creepster', cursive;
-    background-image: url('./giovanni-silva-mainhall.jpg'); 
+    text-align: center;
 }

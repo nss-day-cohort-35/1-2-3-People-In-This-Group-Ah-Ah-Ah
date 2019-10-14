@@ -1,0 +1,46 @@
+.mainCard {
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+    background-color:#BCD8E1;
+}
+
+.mainMainCard {
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+}
+
+.img {
+ max-width: 10%;
+ max-height: 10%;
+ margin: 0 auto;
+}
+
+.buttonFlex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.button {
+    margin: 1em;
+    width: 10%;
+    height: 10%;
+}
+
+.center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    background-color:#BCD8E1;
+}
+
+.navLink {
+    text-decoration: none
+}

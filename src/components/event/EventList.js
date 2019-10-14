@@ -36,10 +36,10 @@ render() {
 
     return (
       <>
-        <div>
+        <div className="mainCard flex">
+          <div className="buttonFlex">
         <Button color="danger" onClick={() => {this.props.history.push("/events/new")}}>New Post</Button>
         </div>
-        <div>
             {this.state.events.map(event => <EventCard key={event.id} event={event} deleteEvent={this.deleteEvent} {...this.props}/>)}
         </div>
 

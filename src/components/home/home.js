@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
+import "./home.css"
 
 class Home extends Component {
 
     render() {
         return (
-            <div >
-                <h2>NSS Kennels<br />
-                    <small>Loving care when you're not there.</small>
+            <div className="home">
+                <h2>Velcome to the Vampire Diares<br />
+                    <small>Ve vish you happy times and all the blood you can drink</small>
                 </h2>
-                <address>
-                    Visit Us at the Nashville North Location
-                    <br />500 Puppy Way
-                </address>
             </div >
         )
     }

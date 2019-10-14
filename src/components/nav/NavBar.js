@@ -1,32 +1,43 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import React, { useState } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
+import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import "./NavBar.css"
 
+const NavBar = (props) => {
+    const [isOpen, setIsOpen] = useState(false);
 
-class NavBar extends Component {
-    render() {
+    const toggle = () => setIsOpen(!isOpen);
+
         return (
-            <nav className="navbar navbar-light light-blue flex-md-nowrap p-0 shadow">
-                <ul className="nav nav-pills nav-fill">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/articles">News</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/events">Events</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/tasks">Tasks</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/friends">Friends</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/messages">Messages</Link>
-                    </li>
-                </ul>
-            </nav>
+            <>
+            <div>
+              <Navbar className="Nav-Bar" light expand="md">
+                <NavbarBrand href="/Home"><img src={require("./OverProject.png")}/></NavbarBrand>
+                <NavbarToggler onClick={toggle} />
+                <Collapse isOpen={isOpen} navbar>
+                  <Nav className="ml-auto" navbar>
+                    <NavItem>
+                      <NavLink className="nav-link text-warning" href="/articles">News</NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink className="nav-link text-warning" href="/events">Events</NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink className="nav-link text-warning" href="/tasks">Tasks</NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink className="nav-link text-warning" href="/friends">Friends</NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink className="nav-link text-warning" href="/messages">Messages</NavLink>
+                    </NavItem>
+                  </Nav>
+                </Collapse>
+              </Navbar>
+            </div>
+            </>
         )
     }
-}
+
 
 export default NavBar
