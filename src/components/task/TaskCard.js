@@ -11,7 +11,7 @@ class TaskCard extends Component {
         API.delete("tasks", id)
             .then(() => this.props.getData());
     }
-
+//renders
     render() {
 
         return (
