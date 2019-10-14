@@ -9,8 +9,7 @@ class EventEditForm extends Component {
         date: "",
         location: "",
         img: "",
-        loadingStatus: true,
-        event: ""
+        loadingStatus: true
       }
 
     // set state to value of input

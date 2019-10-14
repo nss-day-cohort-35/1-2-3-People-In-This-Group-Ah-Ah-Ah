@@ -20,6 +20,7 @@ import MessageEditForm from "./message/MessageEditForm"
 
 import Home from './home/Home'
 import Login from './auth/login'
+//import Nutshell from './Nutshell'
 
 
 class ApplicationViews extends Component {
@@ -28,28 +29,29 @@ class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
-        <Route exact path="/" render={(props) => {
+        <Route exact path="/Home" render={(props) => {
           return <Home />
         }} />
 
         {/* Make sure you add the `exact` attribute here */}
         <Route exact path="/" render={props => {
-          if (this.props.user) {
+        //  if (this.props.user) {
             return <Home {...props} />
-          } else {
-            return <Redirect to="/login" />
-          }
+         // } else {
+          //  return <Redirect to="/login" />
+        //  }
         }} />
 
 
         {/* Article Routes */}
         <Route exact path="/articles" render={props => {
-          if (this.props.user) {
+         // if (this.props.user) {
             return <ArticleList {...props} />
-          } else {
-            return <Redirect to="/login" />
-          }
+          //} else {
+           // return <Redirect to="/login" />
+          //}
         }} />
+
         <Route path="/articles/new" render={(props) => {
           return <ArticleForm {...props} />
         }} />
@@ -61,12 +63,12 @@ class ApplicationViews extends Component {
 
         {/* Event Routes */}
         <Route exact path="/events" render={props => {
-          if (this.props.user) {
+          //if (this.props.user) {
             return <EventList {...props} />
-          } else {
-            return <Redirect to="/login" />
-          }
-        }} />
+         // } else {
+          //  return <Redirect to="/login" />
+          }} />
+          
         <Route path="/events/new" render={(props) => {
           return <EventForm {...props} />
         }} />

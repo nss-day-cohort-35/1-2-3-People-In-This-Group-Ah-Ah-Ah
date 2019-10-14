@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import API from '../../modules/APIManager';
 import {Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
-<<<<<<< HEAD
-import "./Article.css"
-=======
 //import "./Article.css"
->>>>>>> master
 
 class ArticleForm extends Component {
     //set the initial state
@@ -18,7 +14,7 @@ class ArticleForm extends Component {
         image: "",
         url: "",
         loadingStatus: false,
-        modal: false
+        modal: true
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -55,7 +51,7 @@ class ArticleForm extends Component {
       return (
         <>
         <div className="center">
-        <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+       {/*<Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button> */}
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalBody>
            <Form>

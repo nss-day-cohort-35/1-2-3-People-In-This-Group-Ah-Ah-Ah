@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import API from "../../modules/APIManager"
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 class ArticleEditForm extends Component {
     //set the initial state
@@ -21,14 +22,14 @@ class ArticleEditForm extends Component {
     updateExistingArticle = evt => {
       evt.preventDefault()
       this.setState({ loadingStatus: true });
-
       const editedArticle = {
         id: this.props.match.params.articleId,
-        headline: this.props.state.article.headline,
-        date: this.props.state.article.date,
-        description: this.props.state.description,
-        image: this.props.state.image,
-        url: this.props.state.url,
+        headline: this.state.headline,
+        date: this.state.date,
+        description: this.state.description,
+        image: this.state.image,
+        url: this.state.url,
+        loadingStatus: false
       };
 
       API.update( "articles", editedArticle)
@@ -52,39 +53,69 @@ class ArticleEditForm extends Component {
     render() {
       return (
         <>
-        <form>
-          <fieldset>
-            <div className="formgrid">
-              <input
-                type="text"
-                required
-                className="form-control"
-                onChange={this.handleFieldChange}
-                id="name"
-                value={this.state.name}
-              />
-              <label htmlFor="employeeName">Name</label>
+       <Form onSubmit={this.updateExistingArticle} className="articleForm">
+                    <FormGroup className="articleFormGroup">
+                        <Label htmlFor="article">Headline</Label>
+                        <Input
+                            type="text"
+                            required
+                            className="ArticleFormInput"
+                            onChange={this.handleFieldChange}
+                            id="headline"
+                            value={this.state.headline}
+                            placeholder="Headline Name"></Input>
+                    </FormGroup>
 
-              <input
-                type="text"
-                required
-                className="form-control"
-                onChange={this.handleFieldChange}
-                id="position"
-                value={this.state.position}
-              />
-              <label htmlFor="position">Position</label>
-
-            </div>
-            <div className="alignRight">
-              <button
-                type="button" disabled={this.state.loadingStatus}
-                onClick={this.updateExistingEmployee}
-                className="btn btn-primary"
-              >Submit</button>
-            </div>
-          </fieldset>
-        </form>
+                    <FormGroup className="dateInput">
+                        <Label htmlFor="completeDate">Date</Label>
+                        <Input
+                            type="date"
+                            required
+                            className="dateForm"
+                            onChange={this.handleFieldChange}
+                            id="date"
+                            value={this.state.date}
+                        />
+                    </FormGroup>
+                    <FormGroup className="dateInput">
+                        <Label htmlFor="completeDate">Description</Label>
+                        <Input
+                            type="text"
+                            required
+                            className="dateForm"
+                            onChange={this.handleFieldChange}
+                            id="description"
+                            value={this.state.description}
+                        />
+                    </FormGroup>
+                    <FormGroup className="dateInput">
+                        <Label htmlFor="completeDate">Image</Label>
+                        <Input
+                            type="text"
+                            required
+                            className="dateForm"
+                            onChange={this.handleFieldChange}
+                            id="image"
+                            value={this.state.image}
+                        />
+                    </FormGroup>
+                    <FormGroup className="dateInput">
+                        <Label htmlFor="completeDate">Url</Label>
+                        <Input
+                            type="text"
+                            required
+                            className="dateForm"
+                            onChange={this.handleFieldChange}
+                            id="url"
+                            value={this.state.url}
+                        />
+                    </FormGroup>
+                    <Button
+                        type="submit"
+                        className="btn btn-primary">
+                        Submit
+                </Button>
+                </Form>
         </>
       );
     }

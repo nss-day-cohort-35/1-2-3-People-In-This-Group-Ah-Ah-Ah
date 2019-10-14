@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import {Button } from "reactstrap";
 import TaskCard from './TaskCard'
 import API from '../../modules/APIManager';
 

@@ -12,22 +12,32 @@ class ArticleList extends Component {
         articles: [],
     }
 
-    handleDelete = () => {
-        console.log("handle delete :", this.props.article.id)
-        API.delete("articles", this.props.article.id)
-          .then(() => this.props.history.push("/articles"))
+    deleteArticle = id => {
+        API.delete("articles", id)
+            .then(() => {
+                API.getAll("articles")
+                    .then((newArticles) => {
+                        this.setState({
+                            articles: newArticles
+                        })
+                    })
+            })
     }
 
-componentDidMount(){
-    console.log("Article LIST: ComponentDidMount");
+    getData = () => {
+        console.log("trying to get tasks")
+        //getAll from APIManager and hang on to that data; put it in state
+        API.getAll("articles")
+            .then((articles) => {
+                this.setState({
+                    articles: articles
+                })
+            })
+    }
 
-    API.getAll("articles")
-    .then((articles) => {
-        this.setState({
-            articles: articles
-        })
-    })
-}
+    componentDidMount() {
+        this.getData()
+    }
 
 render(){
     console.log("Article LIST: Render");
@@ -35,9 +45,9 @@ render(){
     return(
         <div>
           <div className="flex">
-           <Button onClick={() => {this.props.history.push("/articles/new")}}>New Post</Button>
+           <Button color="danger" onClick={() => {this.props.history.push("/articles/new")}}>New Post</Button>
           </div>
-            {this.state.articles.map(article => <ArticleCard key={article.id} article={article} {...this.props}/>)}
+            {this.state.articles.map(article => <ArticleCard key={article.id} getData={this.getData} article={article} deleteArticle={this.deleteArticle} {...this.props}/>)}
         </div>
     )
 }

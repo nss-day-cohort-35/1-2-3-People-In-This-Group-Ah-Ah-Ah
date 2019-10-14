@@ -7,19 +7,16 @@ import "./Article.css"
 
 class ArticleCard extends Component {
 
-    handleDelete = () => {
-        console.log("handle delete :", this.props.article.id)
-        API.delete("articles", this.props.article.id)
-          .then(() => this.props.history.push("/articles"))
-    }
+  handleDelete = (id) => {
+    API.delete("articles", id)
+        .then(() => this.props.getData());
+}
 
     render() {
         return (
           <div>
             <Card className="mainCard">
               <Row className="flex">
-                <Button type="button"><FaRegEdit/></Button>
-                <Button type="button" onClick={this.handleDelete}><FaRegTrashAlt/></Button>
               </Row>
               <CardImg className="img" top width="100%" src={require("./../../img/vampire.jpg")} alt="Card image cap"/>
               <CardBody>
@@ -27,6 +24,8 @@ class ArticleCard extends Component {
                 <CardSubtitle>{this.props.article.date}</CardSubtitle>
                 <CardText>{this.props.article.description}</CardText>
                 <CardText>{this.props.article.url}</CardText>
+                <Button type="button" onClick={() => { this.props.history.push(`/articles/${this.props.article.id}/edit`) }}><FaRegEdit/></Button>
+                <Button type="button" onClick={() => this.handleDelete(this.props.article.id)}><FaRegTrashAlt/></Button>
               </CardBody>
             </Card>
          </div>
