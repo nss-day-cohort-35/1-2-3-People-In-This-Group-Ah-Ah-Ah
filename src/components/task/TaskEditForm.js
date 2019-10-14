@@ -1,11 +1,12 @@
 import React, { Component } from "react"
-import { Button, Form, FormGroup, Label, Input} from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+
 import API from "../../modules/APIManager";
 
 class TaskEditForm extends Component {
     //set the initial state
     state = {
-        userId: parseInt(localStorage.getItem("userId")),
+        userId: parseInt(sessionStorage.getItem("userId")),
         title: "",
         date: "",
         complete: "",
