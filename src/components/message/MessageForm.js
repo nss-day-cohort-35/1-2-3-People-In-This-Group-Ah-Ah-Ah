@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { Collapse, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import API from "../../modules/APIManager"
 
 
 
-class TaskForm extends Component {
+class MessageForm extends Component {
     state = {
-        userId: parseInt(localStorage.getItem("userID")),
-        title: "",
+        // userId: parseInt(localStorage.getItem("userID")),
+        messageMain: "",
         date: "",
-        complete: "",
         collapse: false,
+        loadingStatus: true,
         status: ""
-    };
+    }
     // sets state to value of input field
     handleFieldChange = event => {
         const stateToChange = {};
@@ -21,16 +21,16 @@ class TaskForm extends Component {
     };
 
     // Make a new task object
-    constructNewTask = event => {
+    constructNewMessage = event => {
         event.preventDefault()
-        const newTask = {
-            title: this.state.title,
+        const newMessage = {
+            messageMain: this.state.messageMain,
             date: this.state.date,
-            complete: false,
-            userId: this.state.userId
+            // userId: this.state.userId,
+
         }
-        API.post("tasks", newTask)
-            .then(() => this.props.history.push("/tasks"));
+        API.post("messages", newMessage)
+            .then(() => this.props.history.push("/messages"));
     }
 
     // build JSX that will display on DOM
@@ -64,27 +64,16 @@ class TaskForm extends Component {
                 //     onEntered={keaton4President.onEntered}
                 //     onExiting={keaton4President.onExiting}
                 //     onExited={keaton4President.onExited}> */}
-                <Form onSubmit={this.constructNewTask} className="taskForm">
-                    <FormGroup className="taskFormGroup">
-                        <Label htmlFor="task">Task</Label>
+                <Form onSubmit={this.constructNewMessage} className="messageForm">
+                    <FormGroup className="messageFormGroup">
+                        <Label htmlFor="message">Message</Label>
                         <Input
-                            type="text"
+                            type="textarea"
                             required
-                            className="taskFormInput"
+                            className="messageFormInput"
                             onChange={this.handleFieldChange}
-                            id="title"
-                            placeholder="Task Name"></Input>
-                    </FormGroup>
-                    <FormGroup className="dateInput">
-                        <Label htmlFor="completeDate">Date</Label>
-                        <Input
-                            type="date"
-                            required
-                            className="dateForm"
-                            onChange={this.handleFieldChange}
-                            id="date"
-                            value={this.state.completeDate}
-                        />
+                            id="messageMain"
+                            placeholder="New Message"></Input>
                     </FormGroup>
                     <Button
                         type="submit"
@@ -98,4 +87,4 @@ class TaskForm extends Component {
     }
 }
 
-export default TaskForm
+export default MessageForm

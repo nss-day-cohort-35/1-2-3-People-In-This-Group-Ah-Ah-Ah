@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MessageCard from './MessageCard'
 import API from '../../modules/APIManager';
-import {Button} from "reactstrap";
+import { Button } from "reactstrap";
 class MessageList extends Component {
     //define what this component needs to render
     state = {
@@ -21,7 +21,7 @@ class MessageList extends Component {
     }
 
     getData = () => {
-        console.log("trying to get tasks")
+        console.log("trying to get messages")
         //getAll from APIManager and hang on to that data; put it in state
         API.getAll("messages")
             .then((messages) => {

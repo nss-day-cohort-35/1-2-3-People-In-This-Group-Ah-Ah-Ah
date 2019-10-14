@@ -123,7 +123,7 @@ class ApplicationViews extends Component {
         <Route path="/messages/new" render={(props) => {
           return <MessageForm {...props} />
         }} />
-        <Route path="/message/:messageId(\d+)/edit" render={props => {
+        <Route path="/messages/:messageId(\d+)/edit" render={props => {
           return <MessageEditForm {...props} />
         }} />
         <Route path="/login" render={props => {

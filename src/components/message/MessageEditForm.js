@@ -58,7 +58,8 @@ class MessageEditForm extends Component {
                             className="messageFormInput"
                             onChange={this.handleFieldChange}
                             id="message"
-                            placeholder="Edit Message"></Input>
+                            placeholder="Edit Message"
+                            value ={this.state.messageMain}></Input>
                     </FormGroup>
                     <FormGroup className="dateInput">
                         <Label htmlFor="Date">Date</Label>
