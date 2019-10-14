@@ -5,10 +5,10 @@ import API from "../../modules/APIManager";
 class MessageEditForm extends Component {
     //set the initial state
     state = {
-        userId: parseInt(localStorage.getItem("userId")),
+        userId: parseInt(sessionStorage.getItem("userId")),
         messageMain: "",
         loadingStatus: true,
- 
+
     };
     // set state to value of input
     handleFieldChange = event => {

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input} from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import API from "../../modules/APIManager"
 
 
 
 class TaskForm extends Component {
     state = {
-        userId: parseInt(localStorage.getItem("userID")),
+        userId: parseInt(sessionStorage.getItem("userID")),
         title: "",
         date: "",
         complete: "",

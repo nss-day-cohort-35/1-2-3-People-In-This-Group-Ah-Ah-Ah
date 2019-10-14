@@ -47,6 +47,7 @@ class Register extends Component {
                 let newUser = {
                     userName: this.state.username,
                     email: this.state.email
+                    password: this.state.password
                 }
 
             this.registerVampire()
