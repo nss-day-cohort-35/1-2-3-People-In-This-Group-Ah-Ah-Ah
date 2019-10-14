@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import ArticleCard from './ArticleCard'
 import API from "./../../modules/APIManager"
 import {Button} from 'reactstrap';
-import "./Article.css"
+import "../../main.css"
 
 
 class ArticleList extends Component {
@@ -43,11 +43,12 @@ render(){
     console.log("Article LIST: Render");
 
     return(
-        <div>
-          <div className="flex">
+        <div className="mainMainCard flex">
+          <div className="buttonFlex">
            <Button color="danger" onClick={() => {this.props.history.push("/articles/new")}}>New Post</Button>
           </div>
             {this.state.articles.map(article => <ArticleCard key={article.id} getData={this.getData} article={article} deleteArticle={this.deleteArticle} {...this.props}/>)}
+
         </div>
     )
 }

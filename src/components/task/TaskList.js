@@ -38,8 +38,10 @@ class TaskList extends Component {
     // create a new task, edit, or mark completed
     render() {
         return (
-            <div>
+            <div className="mainCard flex">
+              <div className="buttonFlex">
                 <Button onClick={() => { this.props.history.push("/tasks/new") }}>Create Task</Button>
+               </div>
                 {this.state.tasks.map(task =>
                     <TaskCard key={task.id}
                         getData={this.getData}
@@ -49,7 +51,6 @@ class TaskList extends Component {
                         className="card" />
 
                 )}
-
             </div>
 
         )
